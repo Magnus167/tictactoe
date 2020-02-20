@@ -213,12 +213,13 @@ begin
     The ranking is stored in TBoard.State, but that is just to reduce object size.
     since the state is being used after calculating ranks, it's simpler to store the rankings here.
 
+    The weighting allows us to choose the board which would allow a possible victory in fewer moves.
 
   }
 
   if getWinner(PB) <> 0 then
   begin
-    Result := getWinner(PB);
+    Result := (9 - getPlayerCount(PB, 0)) * getWinner(PB);
   end
   else
   begin
